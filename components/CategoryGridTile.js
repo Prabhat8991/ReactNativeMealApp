@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 
 function CategoryGridTile({ title, color, onPress }) {
     return <View style={styles.gridItem}>
-        <Pressable onPress={onPress} style={(pressed) => [styles.button, pressed ? styles.buttonPressed : null]} android_ripple={{ color: '#CCCCCC' }}>
+        <Pressable onPress={onPress} style={({ pressed }) => [styles.button, pressed ? styles.buttonPressed : null]} android_ripple={{ color: '#CCCCCC' }}>
             <View style={[styles.innerContainer, { backgroundColor: color }]}>
                 <Text style={styles.title}>{title}</Text>
             </View>
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         shadowColor: 'black',
         shadowOpacity: 0.25,
+        shadowRadius: 8,
         shadowOffset: { width: 0, height: 2 },
         overflow: Platform.OS === 'android' ? 'hidden' : 'visible'
     },

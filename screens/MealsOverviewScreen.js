@@ -6,7 +6,17 @@ import MealItem from '../components/MealItem'
 function MealsOverViewScreen({ route }) {
 
     function renderMealItem(itemData) {
-        return <MealItem title={itemData.item.title} />
+        const item = itemData.item
+
+        const mealItemProp = {
+            title: item.title,
+            imageUrl: item.imageUrl,
+            complexity: item.complexity,
+            duration: item.duration,
+            affordability: item.affordability
+        }
+
+        return <MealItem {...mealItemProp} />
     }
 
     const catId = route.params.categoryId;
