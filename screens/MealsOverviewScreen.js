@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet } from 'react-native'
 import { MEALS, CATEGORIES } from '../data/dummy-data'
 import MealItem from '../components/MealItem'
 import { useLayoutEffect } from 'react'
+import MealsList from '../components/MealList'
 
 function MealsOverViewScreen({ route, navigation }) {
 
@@ -31,15 +32,7 @@ function MealsOverViewScreen({ route, navigation }) {
     }, [catId, navigation])
 
     const displayedMeals = MEALS.filter((mealItem) => { return mealItem.categoryIds.indexOf(catId) >= 0 })
-    return <View style={styles.container}>
-        <FlatList renderItem={renderMealItem} data={displayedMeals} keyExtractor={(meal) => meal.id} />
-    </View>
+    return <MealsList items={displayedMeals} />
 }
 
 export default MealsOverViewScreen
-
-const styles = StyleSheet.create({
-    container: {
-
-    }
-})
